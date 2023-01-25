@@ -1,0 +1,22 @@
+FROM python:3.10-alpine
+
+WORKDIR /usr/app/src
+
+# updating a ton of stuff so mariadb can be installed
+run apk update
+run apk add gcc
+run apk add mariadb-dev
+run apk add musl-dev
+
+COPY requirements.txt ./
+
+RUN pip install --upgrade pip
+
+RUN pip install -r requirements.txt
+
+expose 8080
+
+copy sql_app/* ./sql_app/
+copy __init__.py main.py url_tools.py ./
+
+CMD ["uvicorn", "main:app" , "--host", "127.0.0.1", "--port", "8080"]

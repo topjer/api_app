@@ -1,0 +1,20 @@
+Unser Kunde benötigt einen Service, der eine API bereitstellt, um aus gegebenen URLs mit
+Metadaten eine Short-URL erzeugt. Beim Aufruf der Short-URL soll der Benutzer auf die Ziel-URL
+weitergeleitet werden.
+
+
+Zur Umsetzung gibt es folgende Rahmenbedingungen:
+- Python-basierter Web-Service
+- REST API zur Verwaltung von URLs (CRUD) inkl. Short-URL Generierung mit Redirect-Möglichkeit
+- Um Auswertungen zu ermöglichen soll die Klicks auf die Short-URL getrackt werden
+- Die Request/Response Strukturen des Services sollten im JSON Format sein
+- Daten sollen in einer beliebigen Datenbank gespeichert werden
+
+Der Service sollte folgende fachlichen Operationen ermöglichen
+- Auflisten aller bisherigen URLs mit Metadaten, z.B. Bezeichner, Lang URL, Short-URL, Identifier, Erstellungsdatum, Anzahl Zugriffe
+- Anlegen einer neuen Short-URL
+- Löschen einer Short-URL
+- Zugriff auf die Metadaten einer Short-URL
+- Auflösen der Short-URL mit Redirect auf Ziel URL.
+
+Der Service soll als Docker Container zur Verfügung gestellt werden.

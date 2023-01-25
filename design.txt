@@ -1,0 +1,12 @@
+# Questions
+
+* is there a set algorithm of how to create short URLs?
+  * Is there any expectation regarding how they look?
+* Does 'access to meta data' mean write access?
+  * Is it wished to change single fields of the meta data
+    or just the entire entry
+* Can the data base be in its own container? Do they support
+  pods?
+* details about meta data. What is the difference between
+  bezeichner and identifier? One is given by the user and the
+  other is an id created by me?
