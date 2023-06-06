@@ -6,7 +6,7 @@ from pydantic import BaseModel, HttpUrl
 class Input(BaseModel):
     # this will do full validation (scheme, top level domain, host)
     url: HttpUrl
-    description: str = ''
+    description: str = ""
 
 
 class MetaData(BaseModel):
@@ -14,7 +14,7 @@ class MetaData(BaseModel):
     short_url: str
     klicks: int = 0
     created: str
-    description: str = ''
+    description: str = ""
 
     # orm mode tells pydantic to read data even if not from a dict but an orm model
     class Config:

@@ -5,7 +5,13 @@ from sqlalchemy.orm import Session
 from url_tools import shorten_string
 from datetime import datetime
 from sql_app.schemas import Input, MetaData
-from sql_app.crud import get_entry, create_entry, get_all_entries, get_long_url, delete_entry
+from sql_app.crud import (
+    get_entry,
+    create_entry,
+    get_all_entries,
+    get_long_url,
+    delete_entry,
+)
 from sql_app.database import engine, my_sessionmaker, base
 
 STRING_LENGTH = 8
@@ -16,7 +22,7 @@ app = FastAPI()
 
 
 def get_db():
-    """ Provide database session
+    """Provide database session
 
     Not entirely sure what this does tbh
 
@@ -32,15 +38,13 @@ def get_db():
 
 @app.get("/")
 async def root():
-    """ Display message at root
-
-    """
+    """Display message at root"""
     return {"message": "Hello World!"}
 
 
 @app.post("/add_url/")
 async def add_url(entry: Input, db: Session = Depends(get_db)):
-    """ Add a given URL
+    """Add a given URL
 
     Short URL is being created. MetaData object is being created and
     added to database.
@@ -55,10 +59,10 @@ async def add_url(entry: Input, db: Session = Depends(get_db)):
     if get_entry(db, short_url):
         raise HTTPException(status_code=400, detail="Short-url is already in database.")
     meta_data = dict()
-    meta_data['long_url'] = entry.url
-    meta_data['description'] = entry.description
-    meta_data['short_url'] = short_url
-    meta_data['created'] = str(datetime.now())
+    meta_data["long_url"] = entry.url
+    meta_data["description"] = entry.description
+    meta_data["short_url"] = short_url
+    meta_data["created"] = str(datetime.now())
     md_object = MetaData(**meta_data)
     create_entry(db, md_object)
     return {"message": f"{entry.url} was added."}
@@ -66,7 +70,7 @@ async def add_url(entry: Input, db: Session = Depends(get_db)):
 
 @app.get("/list_urls/")
 async def list_urls(db: Session = Depends(get_db)):
-    """ List all registered urls
+    """List all registered urls
 
     :param db:
         database session
@@ -77,7 +81,7 @@ async def list_urls(db: Session = Depends(get_db)):
 
 @app.get("/redirect/{short_url}")
 async def return_redirect(short_url: str, db: Session = Depends(get_db)):
-    """ Return the redirect for a given short url
+    """Return the redirect for a given short url
 
     :param short_url:
         short url in question
@@ -95,4 +99,3 @@ async def return_redirect(short_url: str, db: Session = Depends(get_db)):
 @app.delete("/delete_entry/{short_url}")
 async def delete(short_url: str, db: Session = Depends(get_db)):
     return delete_entry(db, short_url)
-
