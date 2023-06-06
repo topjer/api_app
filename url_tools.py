@@ -1,6 +1,5 @@
 import hashlib
 
-
 BASE62 = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
