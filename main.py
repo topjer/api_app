@@ -1,18 +1,20 @@
-from fastapi import FastAPI, Depends, HTTPException
-from fastapi.responses import RedirectResponse
 import datetime
-from sqlalchemy.orm import Session
-from url_tools import shorten_string
 from datetime import datetime
-from sql_app.schemas import Input, MetaData
+
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
+from sqlalchemy.orm import Session
+
 from sql_app.crud import (
-    get_entry,
     create_entry,
-    get_all_entries,
-    get_long_url,
     delete_entry,
+    get_all_entries,
+    get_entry,
+    get_long_url,
 )
-from sql_app.database import engine, my_sessionmaker, base
+from sql_app.database import base, engine, my_sessionmaker
+from sql_app.schemas import Input, MetaData
+from url_tools import shorten_string
 
 STRING_LENGTH = 8
 

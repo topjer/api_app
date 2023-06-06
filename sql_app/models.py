@@ -1,5 +1,6 @@
+from sqlalchemy import Column, DateTime, Integer, String
+
 from sql_app.database import base
-from sqlalchemy import Column, Integer, String, DateTime
 
 
 class UrlData(base):

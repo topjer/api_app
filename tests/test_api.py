@@ -1,8 +1,10 @@
 import pytest
-from .main import app
 from fastapi.testclient import TestClient
-from sql_app.crud import empty_table
+
 from main import my_sessionmaker
+from sql_app.crud import empty_table
+
+from .main import app
 
 client = TestClient(app)
 

@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
 import os
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 CONNECTION_STRING = (
     f'mariadb+mariadbconnector://root:{os.getenv("DB_PASS")}@127.0.0.1:3306/api_data'
