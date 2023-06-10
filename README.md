@@ -75,3 +75,13 @@ Install via
 Run via
 
 `tox run [-e environment]`
+
+# Usage
+
+Install the application via
+
+`pip install .`
+
+and run it by executing:
+
+`run_app`
