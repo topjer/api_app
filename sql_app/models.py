@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DateTime, Integer, String
 
-from sql_app.database import base
+from .database import base
 
 
 class UrlData(base):

@@ -5,16 +5,16 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
-from sql_app.crud import (
+from .crud import (
     create_entry,
     delete_entry,
     get_all_entries,
     get_entry,
     get_long_url,
 )
-from sql_app.database import base, engine, my_sessionmaker
-from sql_app.schemas import Input, MetaData
-from url_tools import shorten_string
+from .database import base, engine, my_sessionmaker
+from .schemas import Input, MetaData
+from .url_tools import shorten_string
 
 STRING_LENGTH = 8
 
