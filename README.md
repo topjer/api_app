@@ -65,3 +65,13 @@ Most used http methods:
 ### podman commands
 
 * podman run --network="host" mypyapp:latest
+
+## tox
+
+Install via
+
+`pip install tox`
+
+Run via
+
+`tox run [-e environment]`
