@@ -2,3 +2,6 @@
 sql_app/__pycache__/*
 __pycache__/*
 data/*
+build/*
+tests/__pycache__/*
+api_url_shortener.egg-info/
