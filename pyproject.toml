@@ -1,0 +1,28 @@
+[project]
+name = "api_url_shortener"
+authors = [
+    {name="Topjer"}
+]
+version = "0.1"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python  :: 3"
+]
+dependencies = [
+    "fastapi>=0.89",
+    "SQLAlchemy>=1.4, <2.0",
+    "mariadb>=1.1",
+    "uvicorn>=0.20"
+]
+
+[project.scripts]
+run_app = "sql_app:run_app"
+
+[tool.setuptools]
+packages = ["sql_app"]
+
+
+[build-system]
+requires = [ "setuptools >= 60.0.2", "wheel >= 0.29.0"]
+build-backend = "setuptools.build_meta"
