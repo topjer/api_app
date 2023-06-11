@@ -23,13 +23,14 @@ def test_add_url():
     response = client.post(
         "add_url",
         json={
-            "url": "https://www.codecentric.de/ueber-uns/standorte/leipzig",
+            "url": "https://www.next-kraftwerke.de/jobs",
             "description": "Definitely apply here!",
         },
     )
     assert response.status_code == 200
     assert response.json() == {
-        "message": "https://www.codecentric.de/ueber-uns/standorte/leipzig was added."
+        "message": "https://www.next-kraftwerke.de/jobs was added.",
+        "short_url": "Lu6amSUW"
     }
 
     response = client.get("list_urls")
@@ -37,9 +38,9 @@ def test_add_url():
     response_dict = response.json()[0]
     assert (
         response_dict["long_url"]
-        == "https://www.codecentric.de/ueber-uns/standorte/leipzig"
+        == "https://www.next-kraftwerke.de/jobs"
     )
-    assert response_dict["short_url"] == "vJTnE3Ju"
+    assert response_dict["short_url"] == "Lu6amSUW"
     assert response_dict["description"] == "Definitely apply here!"
     assert response_dict["klicks"] == 0
 
