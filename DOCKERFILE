@@ -8,15 +8,14 @@ run apk add gcc
 run apk add mariadb-dev
 run apk add musl-dev
 
-COPY requirements.txt ./
+expose 8080
+
+copy pyproject.toml ./
+
+copy sql_app/* ./sql_app/
 
 RUN pip install --upgrade pip
 
-RUN pip install -r requirements.txt
+run pip install .
 
-expose 8080
-
-copy sql_app/* ./sql_app/
-copy __init__.py main.py url_tools.py ./
-
-CMD ["uvicorn", "main:app" , "--host", "127.0.0.1", "--port", "8080"]
+CMD ["run_app"]
