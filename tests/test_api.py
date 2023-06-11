@@ -30,16 +30,13 @@ def test_add_url():
     assert response.status_code == 200
     assert response.json() == {
         "message": "https://www.next-kraftwerke.de/jobs was added.",
-        "short_url": "Lu6amSUW"
+        "short_url": "Lu6amSUW",
     }
 
     response = client.get("list_urls")
     assert response.status_code == 200
     response_dict = response.json()[0]
-    assert (
-        response_dict["long_url"]
-        == "https://www.next-kraftwerke.de/jobs"
-    )
+    assert response_dict["long_url"] == "https://www.next-kraftwerke.de/jobs"
     assert response_dict["short_url"] == "Lu6amSUW"
     assert response_dict["description"] == "Definitely apply here!"
     assert response_dict["klicks"] == 0

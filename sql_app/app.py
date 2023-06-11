@@ -67,10 +67,7 @@ async def add_url(entry: Input, db: Session = Depends(get_db)):
     meta_data["created"] = str(datetime.now())
     md_object = MetaData(**meta_data)
     create_entry(db, md_object)
-    return {
-        "message": f"{entry.url} was added.",
-        "short_url": short_url
-    }
+    return {"message": f"{entry.url} was added.", "short_url": short_url}
 
 
 @app.get("/list_urls/")
@@ -96,7 +93,9 @@ async def return_redirect(short_url: str, db: Session = Depends(get_db)):
     """
     long_url = get_long_url(db, short_url)
     if not long_url:
-        raise HTTPException(status_code=400, detail="Nothing was found for the specified short_url")
+        raise HTTPException(
+            status_code=400, detail="Nothing was found for the specified short_url"
+        )
 
     return RedirectResponse(long_url)
 
