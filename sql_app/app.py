@@ -67,7 +67,10 @@ async def add_url(entry: Input, db: Session = Depends(get_db)):
     meta_data["created"] = str(datetime.now())
     md_object = MetaData(**meta_data)
     create_entry(db, md_object)
-    return {"message": f"{entry.url} was added."}
+    return {
+        "message": f"{entry.url} was added.",
+        "short_url": short_url
+    }
 
 
 @app.get("/list_urls/")
