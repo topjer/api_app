@@ -1,3 +1,4 @@
+from typing import Optional
 from sqlalchemy.orm import Session
 
 from . import models, schemas
@@ -56,7 +57,7 @@ def get_all_entries(db: Session):
     return db.query(models.UrlData).all()
 
 
-def get_long_url(db: Session, short_url: str):
+def get_long_url(db: Session, short_url: str) -> Optional[str]:
     """Query long url for a specific short url
 
     Number of klicks is being increased in the process.
