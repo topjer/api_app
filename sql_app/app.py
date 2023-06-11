@@ -96,7 +96,7 @@ async def return_redirect(short_url: str, db: Session = Depends(get_db)):
     """
     long_url = get_long_url(db, short_url)
     if not long_url:
-        raise HTTPException(status_code=400, detail="Short-url is already in database.")
+        raise HTTPException(status_code=400, detail="Nothing was found for the specified short_url")
 
     return RedirectResponse(long_url)
 
